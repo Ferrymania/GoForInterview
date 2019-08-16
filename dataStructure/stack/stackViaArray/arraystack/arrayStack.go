@@ -1,15 +1,20 @@
-package main
+package arraystack
 
 import (
+	"bytes"
 	"fmt"
 )
+
 type SliceStack struct {
-	arr [](interface{})
+	arr []interface{}
 	stackSize int
-
-
 }
 
+func Constructor(capacity int) * SliceStack {
+	return &SliceStack{
+		arr:make([]interface{},0,capacity),
+	}
+}
 func(s *SliceStack) IsEmpty() bool {
 	return s.stackSize == 0
 }
@@ -41,9 +46,17 @@ func(s *SliceStack)Push(t interface{}){
 	s.stackSize++	
 }
 
-func main() {
-	fmt.Println("creat a stack by array")
-	s := &SliceStack{
-		arr:make([]int,0),
+func(s *SliceStack) String() string {
+	var buffer bytes.Buffer
+	buffer.WriteString("Stack: ")
+	buffer.WriteString("[")
+	for i:=0;i<s.GetSize();i++ {
+		buffer.WriteString(fmt.Sprint(s.arr[i]))
+		if i != s.GetSize()-1 {
+			buffer.WriteString(", ")
+		}
 	}
+
+	buffer.WriteString("] top")
+	return buffer.String()
 }
