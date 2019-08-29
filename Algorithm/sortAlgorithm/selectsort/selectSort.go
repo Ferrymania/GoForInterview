@@ -20,7 +20,8 @@ func selectSort(arr []int){
 }
 
 func main() {
-	arr :=[]int{38,65,97,76,13,27,49}
+	//arr :=[]int{38,65,97,76,13,27,49}
+	arr := []int{1, 4, 2, 6, 3}
 	selectSort(arr)
 	fmt.Println("after select",arr)
 }

@@ -1,11 +1,9 @@
 /*
-从顶部逐层打印二叉树结点数据,层序遍历
-Level Order Tree Traversal
+从上往下打印出二叉树的每个结点，同一层的结点按照从左到右的顺序打印
  */
 package main
 
 import "fmt"
-
 type TreeNode struct {
 	data int
 	leftChild *TreeNode
@@ -14,7 +12,7 @@ type TreeNode struct {
 /*
 使用队列
 对于每一个节点，首先访问本节点，再将其子节点放置入先进先出的队列中
- */
+*/
 
 type node struct {
 	value *TreeNode
@@ -70,7 +68,6 @@ func PrintLevelOrder(root *TreeNode){
 	}
 	queue := &LinkedQueue{}
 	queue.EnQueue(root)
-	fmt.Println("queue size is ",queue.GetSize())
 	for !queue.IsEmpty() {
 		tempNode := queue.DeQueue()
 		fmt.Print(tempNode.data," ")

@@ -49,7 +49,6 @@ func main(){
 	PrintNode(head)
 	recursiveReverse(head)
 	PrintNode(head)
-
 }
 
 func CreateNode(node *singlylinkedlist.Node,length int){
