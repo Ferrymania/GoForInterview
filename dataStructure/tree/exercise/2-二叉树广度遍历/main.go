@@ -89,7 +89,7 @@ func main() {
 	root := &TreeNode{data:1}
 	root.leftChild = &TreeNode{data:2}
 	root.rightChild = &TreeNode{data:3}
-	root.leftChild.leftChild = &TreeNode{data:4}
-	root.leftChild.rightChild = &TreeNode{data:5}
+	root.rightChild.leftChild = &TreeNode{data:4}
+	root.rightChild.rightChild = &TreeNode{data:5}
 	PrintLevelOrder(root)
 }
