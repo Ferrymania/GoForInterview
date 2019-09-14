@@ -14,6 +14,35 @@ import (
 	"github.com/Ferrymania/GoForInterview/dataStructure/stack/stackViaLinkedlist/linkedstack"
 )
 
+func isValid2(s string)bool {
+	if s == ""{
+		return true
+	}
+	stack := []byte{}
+	for i:=0;i<len(s);i++{
+		if s[i] == '('|| s[i] =='[' || s[i] == '{'{
+			stack = append(stack,s[i])
+		}else {
+			if len(stack) == 0 {
+				return false
+			}
+			if s[i] == ')' && stack[len(stack)-1] != '(' {
+				return false
+			}
+			if s[i] == ']' && stack[len(stack)-1] != '[' {
+				return  false
+			}
+			if s[i] == '}' && stack[len(stack)-1] != '{'{
+				return false
+			}
+			stack = stack[:len(stack)-1]
+		}
+	}
+	if len(stack) == 0{
+		return true
+	}
+	return false
+}
 func isValid(s string) bool {
 	if s == ""{
 		return true
@@ -47,7 +76,7 @@ func isValid(s string) bool {
 }
 
 func main() {
-	s := "{{[123]}}"
+	s := "){{[123]}}"
 	fmt.Println("Is string valid parentheses",isValid(s))
 }
 
