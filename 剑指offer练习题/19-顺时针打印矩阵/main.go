@@ -28,7 +28,7 @@ func PrintMatrixCircle(arr [][]int,rows ,cols,start int){
 	}
 
 	if start<endY {
-		for i:=start+1;i<endY;i++{
+		for i:=start+1;i<=endY;i++{
 			number:=arr[i][endX]
 			fmt.Print(number,"->")
 		}

@@ -5,7 +5,10 @@
  */
 package main
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 /*
 n个数字共有n!个排列
@@ -17,6 +20,26 @@ n个数字共有n!个排列
 若ab = ba 则 a = b
  */
 
+func compare(a,b string)bool{
+	s1 := a+b
+	s2 := b+a
+	if s1 < s2 {
+		return true
+	}else {
+		return false
+	}
+}
+func sort(arr []string){
+	for i:=0;i<len(arr)-1;i++{
+		for j:=i+1;j<len(arr);j++{
+			if !compare(arr[i],arr[j]) {
+				temp := arr[j]
+				arr[j] = arr[i]
+				arr[i] = temp
+			}
+		}
+	}
+}
 func PrintMinNumber(number []int)string{
 	if number == nil {
 		return ""
@@ -29,9 +52,17 @@ func PrintMinNumber(number []int)string{
 	for i:=0;i<length;i++{
 		strArr[i] = strconv.Itoa(number[i])
 	}
-
-
+	sort(strArr)
+	var res string
+	for _,v :=range strArr {
+		res += v
+	}
+	return res
 }
 
+func main(){
+	arr :=[]int{3,32,321}
+	fmt.Println(PrintMinNumber(arr))
+}
 
 

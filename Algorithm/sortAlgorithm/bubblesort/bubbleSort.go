@@ -4,14 +4,19 @@ import "fmt"
 
 func bubbleSort(arr []int){
 	var temp int
+	flag := false
 	for i:=0;i<len(arr);i++{
 		for j:=len(arr)-1;j>i;j-- {
-			fmt.Printf("j is %v a[j] is %v \n",j,arr[j])
 			if arr[j]<arr[j-1]{
 				temp = arr[j]
 				arr[j] = arr[j-1]
 				arr[j-1] = temp
+				//如果没有交换 说明已经有序
+				flag = true
 			}
+		}
+		if !flag {
+			break
 		}
 	}
 }

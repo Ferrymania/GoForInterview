@@ -31,6 +31,7 @@ func HasSubTree(aRoot,bRoot *treeNode)bool{
 	return result
 }
 
+//递归的终止条件是到达了树A或者树B的叶结点
 func DoesTreeAHaveTreeB(aRoot,bRoot *treeNode)bool{
 	if bRoot == nil {
 		return true

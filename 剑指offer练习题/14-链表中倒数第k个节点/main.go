@@ -24,7 +24,13 @@ func FindKthToTail(head *node,k int)*node{
 	pAhead := head
 	pBehind := head
 	for i:=0;i<k-1;i++{
-		pAhead = pAhead.next
+		//判断k是不是大于链表长度
+		if pAhead.next != nil {
+			pAhead = pAhead.next
+		}else {
+			return  nil
+		}
+
 	}
 	for pAhead.next!= nil{
 		pAhead = pAhead.next

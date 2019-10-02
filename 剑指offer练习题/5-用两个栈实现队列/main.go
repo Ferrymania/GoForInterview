@@ -34,6 +34,30 @@ func(q *StackQueue)DeQueue() int {
 	return q.bStack.Pop().(int)
 }
 
+type queue struct {
+	aStack []int //插入栈
+	bStack []int //弹出栈，B不为空，则直接弹出栈B的数据 B为空，则依次弹出栈A的数据，放入栈B中，再弹出栈B的数据
+}
+
+func (q *queue) Enqueue(data int) {
+	q.aStack = append(q.aStack, data)
+}
+
+func (q *queue) Dequeue() int {
+	if len(q.bStack) == 0 {
+		if len(q.aStack) != 0 {
+			for len(q.aStack) != 0 {
+				top := q.aStack[len(q.aStack)-1]
+				q.bStack = append(q.bStack, top)
+				q.aStack = q.aStack[:len(q.aStack)-1]
+			}
+		}
+	}
+	res := q.bStack[len(q.bStack)-1]
+	q.bStack = q.bStack[:len(q.bStack)-1]
+	return res
+}
+
 func main() {
 	q := &StackQueue{aStack:&arraystack.SliceStack{},bStack:&arraystack.SliceStack{}}
 	q.EnQueue(2)
